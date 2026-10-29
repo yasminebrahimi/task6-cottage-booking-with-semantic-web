@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://example.org/cottage#"
-     xml:base="http://example.org/cottage"
+<rdf:RDF xmlns="http://localhost:8080/cottage-booking/onto/cottage.owl#"
+     xml:base="http://localhost:8080/cottage-booking/onto/cottage.owl"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:data="http://example.org/cottage/data/"
+     xmlns:data="http://localhost:8080/cottage-booking/data/cottages.ttl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://example.org/cottage">
-        <owl:imports rdf:resource="file:/Users/rabindramanandhar/Desktop/Semantic_Technologies_for_Developers/Tasks/Task6/cottages.ttl"/>
-        <rdfs:comment xml:lang="en">Basic ontology for TIES4520 Task 6 &quot;Cottage booking&quot; service. Describes cottages, their nearest city, and the periods in which they are already booked. Lake distance is in meters, city distance in kilometers. Dates are xsd:date, and a period includes both its start and end day.</rdfs:comment>
+    
+    <owl:Ontology rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl">
+        <rdfs:comment xml:lang="en">Basic ontology for TIES4520 Task 6;Cottage booking; service. Describes cottages, their nearest city, and the periods in which they are already booked. Lake distance is in meters, city distance in kilometers. Dates are xsd:date, and a period includes both its start and end day.</rdfs:comment>
         <rdfs:label xml:lang="en">Cottage booking ontology</rdfs:label>
     </owl:Ontology>
     
@@ -26,22 +26,22 @@
     
 
 
-    <!-- http://example.org/cottage#hasBookedPeriod -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#hasBookedPeriod -->
 
-    <owl:ObjectProperty rdf:about="http://example.org/cottage#hasBookedPeriod">
-        <rdfs:domain rdf:resource="http://example.org/cottage#Cottage"/>
-        <rdfs:range rdf:resource="http://example.org/cottage#BookedPeriod"/>
+    <owl:ObjectProperty rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#hasBookedPeriod">
+        <rdfs:domain rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#Cottage"/>
+        <rdfs:range rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#BookedPeriod"/>
         <rdfs:comment xml:lang="en">Links a cottage to one of its booked periods.</rdfs:comment>
         <rdfs:label xml:lang="en">has booked period</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://example.org/cottage#nearestCity -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#nearestCity -->
 
-    <owl:ObjectProperty rdf:about="http://example.org/cottage#nearestCity">
-        <rdfs:domain rdf:resource="http://example.org/cottage#Cottage"/>
-        <rdfs:range rdf:resource="http://example.org/cottage#City"/>
+    <owl:ObjectProperty rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#nearestCity">
+        <rdfs:domain rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#Cottage"/>
+        <rdfs:range rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#City"/>
         <rdfs:comment xml:lang="en">The city nearest to the cottage.</rdfs:comment>
         <rdfs:label xml:lang="en">nearest city</rdfs:label>
     </owl:ObjectProperty>
@@ -59,10 +59,10 @@
     
 
 
-    <!-- http://example.org/cottage#cityName -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#cityName -->
 
-    <owl:DatatypeProperty rdf:about="http://example.org/cottage#cityName">
-        <rdfs:domain rdf:resource="http://example.org/cottage#City"/>
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#cityName">
+        <rdfs:domain rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#City"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment xml:lang="en">Name of the city.</rdfs:comment>
         <rdfs:label xml:lang="en">city name</rdfs:label>
@@ -70,10 +70,10 @@
     
 
 
-    <!-- http://example.org/cottage#cottageName -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#cottageName -->
 
-    <owl:DatatypeProperty rdf:about="http://example.org/cottage#cottageName">
-        <rdfs:domain rdf:resource="http://example.org/cottage#Cottage"/>
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#cottageName">
+        <rdfs:domain rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#Cottage"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment xml:lang="en">Display name of the cottage.</rdfs:comment>
         <rdfs:label xml:lang="en">cottage name</rdfs:label>
@@ -81,10 +81,10 @@
     
 
 
-    <!-- http://example.org/cottage#distanceFromLake -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#distanceFromLake -->
 
-    <owl:DatatypeProperty rdf:about="http://example.org/cottage#distanceFromLake">
-        <rdfs:domain rdf:resource="http://example.org/cottage#Cottage"/>
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#distanceFromLake">
+        <rdfs:domain rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#Cottage"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:comment xml:lang="en">Distance from the nearest lake, in meters.</rdfs:comment>
         <rdfs:label xml:lang="en">distance from lake</rdfs:label>
@@ -92,21 +92,21 @@
     
 
 
-    <!-- http://example.org/cottage#distanceToCity -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#distanceToCity -->
 
-    <owl:DatatypeProperty rdf:about="http://example.org/cottage#distanceToCity">
-        <rdfs:domain rdf:resource="http://example.org/cottage#Cottage"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#distanceToCity">
+        <rdfs:domain rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#Cottage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:comment xml:lang="en">Distance from the cottage to its nearest city.</rdfs:comment>
         <rdfs:label xml:lang="en">distance to the nearest city</rdfs:label>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://example.org/cottage#hasAddress -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#hasAddress -->
 
-    <owl:DatatypeProperty rdf:about="http://example.org/cottage#hasAddress">
-        <rdfs:domain rdf:resource="http://example.org/cottage#Cottage"/>
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#hasAddress">
+        <rdfs:domain rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#Cottage"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment xml:lang="en">Street address of the cottage as a single text line.</rdfs:comment>
         <rdfs:label xml:lang="en">has address</rdfs:label>
@@ -114,10 +114,10 @@
     
 
 
-    <!-- http://example.org/cottage#hasBedrooms -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#hasBedrooms -->
 
-    <owl:DatatypeProperty rdf:about="http://example.org/cottage#hasBedrooms">
-        <rdfs:domain rdf:resource="http://example.org/cottage#Cottage"/>
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#hasBedrooms">
+        <rdfs:domain rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#Cottage"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:comment xml:lang="en">Actual number of bedrooms in the cottage.</rdfs:comment>
         <rdfs:label xml:lang="en">has bedrooms</rdfs:label>
@@ -125,10 +125,10 @@
     
 
 
-    <!-- http://example.org/cottage#hasCapacity -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#hasCapacity -->
 
-    <owl:DatatypeProperty rdf:about="http://example.org/cottage#hasCapacity">
-        <rdfs:domain rdf:resource="http://example.org/cottage#Cottage"/>
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#hasCapacity">
+        <rdfs:domain rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#Cottage"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:comment xml:lang="en">Actual number of places (people) in the cottage.</rdfs:comment>
         <rdfs:label xml:lang="en">has capacity</rdfs:label>
@@ -136,10 +136,10 @@
     
 
 
-    <!-- http://example.org/cottage#hasImage -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#hasImage -->
 
-    <owl:DatatypeProperty rdf:about="http://example.org/cottage#hasImage">
-        <rdfs:domain rdf:resource="http://example.org/cottage#Cottage"/>
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#hasImage">
+        <rdfs:domain rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#Cottage"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
         <rdfs:comment xml:lang="en">URL of an image of the cottage.</rdfs:comment>
         <rdfs:label xml:lang="en">has image</rdfs:label>
@@ -147,10 +147,10 @@
     
 
 
-    <!-- http://example.org/cottage#periodEnd -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#periodEnd -->
 
-    <owl:DatatypeProperty rdf:about="http://example.org/cottage#periodEnd">
-        <rdfs:domain rdf:resource="http://example.org/cottage#BookedPeriod"/>
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#periodEnd">
+        <rdfs:domain rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#BookedPeriod"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
         <rdfs:comment xml:lang="en">Last day of the booked period (included).</rdfs:comment>
         <rdfs:label xml:lang="en">period end</rdfs:label>
@@ -158,10 +158,10 @@
     
 
 
-    <!-- http://example.org/cottage#periodStart -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#periodStart -->
 
-    <owl:DatatypeProperty rdf:about="http://example.org/cottage#periodStart">
-        <rdfs:domain rdf:resource="http://example.org/cottage#BookedPeriod"/>
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#periodStart">
+        <rdfs:domain rdf:resource="http://localhost:8080/cottage-booking/onto/cottage.owl#BookedPeriod"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
         <rdfs:comment xml:lang="en">First day of the booked period (included).</rdfs:comment>
         <rdfs:label xml:lang="en">period start</rdfs:label>
@@ -180,27 +180,27 @@
     
 
 
-    <!-- http://example.org/cottage#BookedPeriod -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#BookedPeriod -->
 
-    <owl:Class rdf:about="http://example.org/cottage#BookedPeriod">
+    <owl:Class rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#BookedPeriod">
         <rdfs:comment xml:lang="en">A period in which a cottage is already booked.</rdfs:comment>
         <rdfs:label xml:lang="en">Booked period</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://example.org/cottage#City -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#City -->
 
-    <owl:Class rdf:about="http://example.org/cottage#City">
+    <owl:Class rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#City">
         <rdfs:comment xml:lang="en">A city or town that serves as a reference point for the location of a cottage.</rdfs:comment>
         <rdfs:label xml:lang="en">City</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://example.org/cottage#Cottage -->
+    <!-- http://localhost:8080/cottage-booking/onto/cottage.owl#Cottage -->
 
-    <owl:Class rdf:about="http://example.org/cottage#Cottage">
+    <owl:Class rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl#Cottage">
         <rdfs:comment xml:lang="en">A holiday cottage that can be booked.</rdfs:comment>
         <rdfs:label xml:lang="en">Cottage</rdfs:label>
     </owl:Class>
