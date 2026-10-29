@@ -1,9 +1,15 @@
-@prefix : <http://example.org/cottage#> .
-@prefix cd: <http://example.org/cottage/data/> .
+@prefix : <http://localhost:8080/cottage-booking/onto/cottage.owl#> .
+@prefix cd: <http://localhost:8080/cottage-booking/data/cottages.ttl#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+# This dataset uses the vocabulary defined in the deployed OWL ontology.
+# Class/property IRIs use cottage.owl#; instance IRIs use cottages.ttl#.
+
+<http://localhost:8080/cottage-booking/data/cottages.ttl> a owl:Ontology ;
+    owl:imports <http://localhost:8080/cottage-booking/onto/cottage.owl> .
 
 # Cottage database for the "Cottage booking" service (7 cottages).
 # All cottages, addresses and booked periods are fictional example data.
