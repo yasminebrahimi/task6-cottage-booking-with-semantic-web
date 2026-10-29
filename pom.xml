@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fi.jyu.ties4520</groupId>
+  <artifactId>cottage-booking</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>Cottage Booking Service</name>
+  <description>TIES-4520 Task 6: Java web frontend and RDF-driven cottage booking suggestions</description>
+  <properties>
+  	<maven.compiler.release>21</maven.compiler.release>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+  <!-- Jena: RDF model, Turtle/RDF-XML parsing and SPARQL -->
+  <dependency>
+    <groupId>org.apache.jena</groupId>
+    <artifactId>jena-arq</artifactId>
+    <version>6.2.0</version>
+  </dependency>
+
+  <!-- Servlet API for Tomcat 11: provided = Tomcat supplies it, not packed into the WAR -->
+  <dependency>
+    <groupId>jakarta.servlet</groupId>
+    <artifactId>jakarta.servlet-api</artifactId>
+    <version>6.1.0</version>
+    <scope>provided</scope>
+  </dependency>
+
+  <!-- JSON output (Jackson 2.x) -->
+  <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.22.4</version>
+  </dependency>
+
+  <!-- Logging backend so Jena does not print "no SLF4J provider" warnings -->
+  <dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-simple</artifactId>
+    <version>2.0.17</version>
+  </dependency>
+</dependencies>
+  <build>
+  	<finalName>cottage-booking</finalName>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.16.0</version>
+  		</plugin>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.5.1</version>
+  		</plugin>
+  	</plugins>
+  </build>
+    
+</project>

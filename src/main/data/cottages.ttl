@@ -1,0 +1,158 @@
+@prefix : <http://example.org/cottage#> .
+@prefix cd: <http://example.org/cottage/data/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+# Cottage database for the "Cottage booking" service (7 cottages).
+# All cottages, addresses and booked periods are fictional example data.
+# Distances: lake in meters, city in kilometers. Periods include start and end day.
+# Image URLs are placeholders: replace them with real cottage photos.
+
+#  Cities
+
+cd:City1 a :City ; :cityName "City1" .
+cd:City2 a :City ; :cityName "City2" .
+cd:City3 a :City ; :cityName "City3" .
+cd:City4 a :City ; :cityName "City4" .
+cd:City5 a :City ; :cityName "City5" .
+cd:City6 a :City ; :cityName "City6" .
+cd:City7 a :City ; :cityName "City7" .
+
+# Cottages
+
+# 1
+cd:Cottage1 a :Cottage ;
+    :cottageName "Cottage1" ;
+    :hasAddress "Address 1" ;
+    :hasImage "https://photos.com/image1"^^xsd:anyURI ;
+    :hasCapacity 4 ;
+    :hasBedrooms 2 ;
+    :distanceFromLake 30 ;
+    :nearestCity cd:City1 ;
+    :distanceToCity 6 ;
+    :hasBookedPeriod
+        cd:Cottage1Booking1 ,
+        cd:Cottage1Booking2 . 
+
+# 2
+cd:Cottage2 a :Cottage ;
+    :cottageName "Cottage2" ;
+    :hasAddress "Address 2" ;
+    :hasImage "https://photos.com/image2"^^xsd:anyURI ;
+    :hasCapacity 6 ;
+    :hasBedrooms 3 ;
+    :distanceFromLake 120 ;
+    :nearestCity cd:City2 ;
+    :distanceToCity 18 ;
+    :hasBookedPeriod
+        cd:Cottage2Booking1 ,
+        cd:Cottage2Booking2 .
+
+# 3
+cd:Cottage3 a :Cottage ;
+    :cottageName "Cottage3" ;
+    :hasAddress "Address 3" ;
+    :hasImage "https://photos.com/image3"^^xsd:anyURI ;
+    :hasCapacity 2 ;
+    :hasBedrooms 1 ;
+    :distanceFromLake 10 ;
+    :nearestCity cd:City3 ;
+    :distanceToCity 12 .
+
+# 4
+cd:Cottage4 a :Cottage ;
+    :cottageName "Cottage4" ;
+    :hasAddress "Address 4" ;
+    :hasImage "https://photos.com/image4"^^xsd:anyURI ;
+    :hasCapacity 8 ;
+    :hasBedrooms 4 ;
+    :distanceFromLake 250 ;
+    :nearestCity cd:City4 ;
+    :distanceToCity 9 ;
+    :hasBookedPeriod
+        cd:Cottage4Booking1 .
+
+# 5
+cd:Cottage5 a :Cottage ;
+    :cottageName "Cottage5" ;
+    :hasAddress "Address 5" ;
+    :hasImage "https://photos.com/image5"^^xsd:anyURI ;
+    :hasCapacity 5 ;
+    :hasBedrooms 2 ;
+    :distanceFromLake 500 ;
+    :nearestCity cd:City5 ;
+    :distanceToCity 15 ;
+    :hasBookedPeriod
+        cd:Cottage5Booking1 ,
+        cd:Cottage5Booking2 .
+
+# 6
+cd:Cottage6 a :Cottage ;
+    :cottageName "Cottage6" ;
+    :hasAddress "Address 6" ;
+    :hasImage "https://photos.com/image6"^^xsd:anyURI ;
+    :hasCapacity 10 ;
+    :hasBedrooms 5 ;
+    :distanceFromLake 60 ;
+    :nearestCity cd:City6 ;
+    :distanceToCity 22 ;
+    :hasBookedPeriod
+        cd:Cottage6Booking1 .
+
+# 7
+cd:Cottage7 a :Cottage ;
+    :cottageName "Cottage7" ;
+    :hasAddress "Address 7" ;
+    :hasImage "https://photos.com/image7"^^xsd:anyURI ;
+    :hasCapacity 3 ;
+    :hasBedrooms 1 ;
+    :distanceFromLake 200 ;
+    :nearestCity cd:City7 ;
+    :distanceToCity 4 ;
+    :hasBookedPeriod
+        cd:Cottage7Booking1 ,
+        cd:Cottage7Booking2 .
+
+# Named booked periods
+
+cd:Cottage1Booking1 a owl:NamedIndividual, :BookedPeriod ;
+    :periodStart "2026-12-20"^^xsd:date ;
+    :periodEnd "2026-12-27"^^xsd:date .
+
+cd:Cottage1Booking2 a owl:NamedIndividual, :BookedPeriod ;
+    :periodStart "2027-01-10"^^xsd:date ;
+    :periodEnd "2027-01-14"^^xsd:date .
+
+cd:Cottage2Booking1 a owl:NamedIndividual, :BookedPeriod ;
+    :periodStart "2026-11-20"^^xsd:date ;
+    :periodEnd "2026-11-23"^^xsd:date .
+
+cd:Cottage2Booking2 a owl:NamedIndividual, :BookedPeriod ;
+    :periodStart "2026-12-28"^^xsd:date ;
+    :periodEnd "2027-01-03"^^xsd:date .
+
+cd:Cottage4Booking1 a owl:NamedIndividual, :BookedPeriod ;
+    :periodStart "2026-12-15"^^xsd:date ;
+    :periodEnd "2026-12-31"^^xsd:date .
+
+cd:Cottage5Booking1 a owl:NamedIndividual, :BookedPeriod ;
+    :periodStart "2026-11-10"^^xsd:date ;
+    :periodEnd "2026-11-17"^^xsd:date .
+
+cd:Cottage5Booking2 a owl:NamedIndividual, :BookedPeriod ;
+    :periodStart "2027-02-01"^^xsd:date ;
+    :periodEnd "2027-02-07"^^xsd:date .
+
+cd:Cottage6Booking1 a owl:NamedIndividual, :BookedPeriod ;
+    :periodStart "2026-12-23"^^xsd:date ;
+    :periodEnd "2027-01-02"^^xsd:date .
+
+cd:Cottage7Booking1 a owl:NamedIndividual, :BookedPeriod ;
+    :periodStart "2026-11-05"^^xsd:date ;
+    :periodEnd "2026-11-30"^^xsd:date .
+
+cd:Cottage7Booking2 a owl:NamedIndividual, :BookedPeriod ;
+    :periodStart "2026-12-10"^^xsd:date ;
+    :periodEnd "2026-12-12"^^xsd:date .

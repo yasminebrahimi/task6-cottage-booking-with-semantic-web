@@ -1,0 +1,14 @@
+# Maven build output
+target/
+
+# Eclipse metadata (each developer's IDE regenerates these)
+.classpath
+.project
+.settings/
+bin/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
