@@ -1,0 +1,7 @@
+services:
+ cottage-booking:
+  build:
+   context: .
+   dockerfile: Dockerfile
+  container_name: cottage-booking
+  command: ["mvn", "-B", "-ntp", "clean", "package"]
