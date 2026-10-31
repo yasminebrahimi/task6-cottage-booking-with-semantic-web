@@ -36,6 +36,7 @@ public class BookingRequest {
 			String startDate,
 			int maxShiftDays
 			) {
+		
 		// Validate the input values
 		if (bookerName == null || bookerName.isBlank()) {
 			throw new IllegalArgumentException(
@@ -77,7 +78,7 @@ public class BookingRequest {
         this.numberOfDays = numberOfDays;
         this.maxShiftDays = maxShiftDays;
         
-        // Convert the input date to LocalDate
+        // Convert the input date (From String to LocalDate)
         try {
         	this.startDate = LocalDate.parse(startDate, DATE_FORMAT);
         } catch (DateTimeParseException e) {
@@ -128,36 +129,17 @@ public class BookingRequest {
 		return startDate.format(DATE_FORMAT);
 	}
 	
-	public static void main(String[] args) {
-
-        BookingRequest request = new BookingRequest(
-                "Anna",
-                4,
-                2,
-                200,
-                "City1",
-                30,
-                5,
-                "15.11.2026",
-                2
-        );
-
-        System.out.println("Booker: " + request.getBookerName());
-
-        System.out.println("Required people: " + request.getRequiredPlaces());
-
-        System.out.println("Bedrooms: " + request.getRequiredBedrooms());
-
-        System.out.println("Maximum lake distance: " + request.getMaxLakeDistance());
-
-        System.out.println("City: " + request.getCity());
-
-        System.out.println("Maximum city distance: " + request.getMaxCityDistance());
-
-        System.out.println("Duration: " + request.getNumberOfDays());
-
-        System.out.println("Start date: " + request.getFormattedStartDate());
-
-        System.out.println("Shift: +/-" + request.getMaxShiftDays() + " days");
+	// Display booking request information
+    @Override
+    public String toString() {
+        return "Booker: " + bookerName +
+                "\nRequired people: " + requiredPlaces +
+                "\nBedrooms: " + requiredBedrooms +
+                "\nMaximum lake distance: " + maxLakeDistance +
+                "\nCity: " + city +
+                "\nMaximum city distance: " + maxCityDistance +
+                "\nDuration: " + numberOfDays +
+                "\nStart date: " + getFormattedStartDate() +
+                "\nShift: +/-" + maxShiftDays + " days";
     }
 }
