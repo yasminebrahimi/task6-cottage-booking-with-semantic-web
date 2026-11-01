@@ -3,10 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <title>Cottage Booking</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 2em auto; padding: 0 1em; }
+    label { display: block; margin-top: 0.8em; }
+    input { width: 100%; padding: 0.4em; box-sizing: border-box; }
+    button { margin-top: 1.2em; padding: 0.6em 1.5em; }
+  </style>
 </head>
 <body>
   <h1>Cottage Booking</h1>
-  <p>The service is running. The search form comes next.</p>
+
+  <!-- The 9 search inputs. The servlet at "search" will handle this form. -->
+  <form id="searchForm" action="search" method="get">
+    <label>Your name
+      <input name="bookerName" required>
+    </label>
+    <label>Number of people
+      <input name="requiredPlaces" type="number" min="1" required>
+    </label>
+    <label>Number of bedrooms
+      <input name="requiredBedrooms" type="number" min="1" required>
+    </label>
+    <label>Max distance to a lake (meters)
+      <input name="maxLakeDistance" type="number" min="0" required>
+    </label>
+    <label>City
+      <input name="city" required>
+    </label>
+    <label>Max distance to the city (km)
+      <input name="maxCityDistance" type="number" min="0" required>
+    </label>
+    <label>Number of days
+      <input name="numberOfDays" type="number" min="1" required>
+    </label>
+    <label>Start date (dd.mm.yyyy)
+      <input name="startDate" placeholder="15.12.2026" pattern="\d{2}\.\d{2}\.\d{4}" required>
+    </label>
+    <label>Max shift of the start date (+/- days)
+      <input name="maxShiftDays" type="number" min="0" value="0" required>
+    </label>
+
+    <button type="submit">Search</button>
+  </form>
+
   <p>Ontology: <a href="onto/cottage.owl">onto/cottage.owl</a></p>
 </body>
 </html>
