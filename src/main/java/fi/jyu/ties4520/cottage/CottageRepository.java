@@ -114,4 +114,9 @@ public class CottageRepository {
 
         return "Unknown Cottage";
     }
+
+    // Give the search service access to the loaded RDF data
+    public Model getModel() {
+        return model;
+    }
 }
