@@ -34,6 +34,7 @@ public class CottageRepositoryTestRun {
 
         // Test retrieving a cottage by ID
         System.out.println("Searching for Cottage1:");
+        System.out.println("...................");
 
         Resource cottage = repository.getCottageById("Cottage1");
 
