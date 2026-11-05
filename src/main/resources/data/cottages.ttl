@@ -18,25 +18,25 @@
 
 #  Cities
 
-cd:City1 a :City ; :cityName "City1" .
-cd:City2 a :City ; :cityName "City2" .
-cd:City3 a :City ; :cityName "City3" .
-cd:City4 a :City ; :cityName "City4" .
-cd:City5 a :City ; :cityName "City5" .
-cd:City6 a :City ; :cityName "City6" .
-cd:City7 a :City ; :cityName "City7" .
+cd:Savonlinna a :City ; :cityName "Savonlinna" .
+cd:Utajärvi a :City ; :cityName "Utajärvi" .
+cd:Joensuu a :City ; :cityName "Joensuu" .
+cd:Suomussalmi a :City ; :cityName "Suomussalmi" .
+cd:Kuopio a :City ; :cityName "Kuopio" .
+cd:Nuutilanmäki a :City ; :cityName "Nuutilanmäki" .
+cd:Jyväskylä a :City ; :cityName "Jyväskylä" .
 
 # Cottages
 
 # 1
 cd:Cottage1 a :Cottage ;
-    :cottageName "Cottage1" ;
-    :hasAddress "Address 1" ;
-    :hasImage "https://photos.com/image1"^^xsd:anyURI ;
+    :cottageName "Koskelan Huvila" ;
+    :hasAddress "Kuokkalantie 1160, 58170 Enonkoski, Finland" ;
+    :hasImage "http://localhost:8080/cottage-booking/images/cottage1.jpg"^^xsd:anyURI ;
     :hasCapacity 4 ;
     :hasBedrooms 2 ;
     :distanceFromLake 30 ;
-    :nearestCity cd:City1 ;
+    :nearestCity cd:Savonlinna ;
     :distanceToCity 6 ;
     :hasBookedPeriod
         cd:Cottage1Booking1 ,
@@ -44,13 +44,13 @@ cd:Cottage1 a :Cottage ;
 
 # 2
 cd:Cottage2 a :Cottage ;
-    :cottageName "Cottage2" ;
-    :hasAddress "Address 2" ;
-    :hasImage "https://photos.com/image2"^^xsd:anyURI ;
+    :cottageName "Rokua Geopark" ;
+    :hasAddress "Valtatie 17, 91500 Muhos, Finland" ;
+    :hasImage "http://localhost:8080/cottage-booking/images/cottage2.jpg"^^xsd:anyURI ;
     :hasCapacity 6 ;
     :hasBedrooms 3 ;
-    :distanceFromLake 120 ;
-    :nearestCity cd:City2 ;
+    :distanceFromLake 10 ;
+    :nearestCity cd:Utajärvi ;
     :distanceToCity 18 ;
     :hasBookedPeriod
         cd:Cottage2Booking1 ,
@@ -58,65 +58,65 @@ cd:Cottage2 a :Cottage ;
 
 # 3
 cd:Cottage3 a :Cottage ;
-    :cottageName "Cottage3" ;
-    :hasAddress "Address 3" ;
-    :hasImage "https://photos.com/image3"^^xsd:anyURI ;
+    :cottageName "Lieksa Cottage" ;
+    :hasAddress "Lieksankatu 2, 81720 Lieksa, Finland" ;
+    :hasImage "http://localhost:8080/cottage-booking/images/cottage3.jpg"^^xsd:anyURI ;
     :hasCapacity 2 ;
     :hasBedrooms 1 ;
     :distanceFromLake 10 ;
-    :nearestCity cd:City3 ;
-    :distanceToCity 12 .
+    :nearestCity cd:Joensuu ;
+    :distanceToCity 80 .
 
 # 4
 cd:Cottage4 a :Cottage ;
-    :cottageName "Cottage4" ;
-    :hasAddress "Address 4" ;
-    :hasImage "https://photos.com/image4"^^xsd:anyURI ;
+    :cottageName "Oraviniemen Aarre" ;
+    :hasAddress "Oraviniementie 20, 89900 Suomussalmi, Finland" ;
+    :hasImage "http://localhost:8080/cottage-booking/images/cottage4.jpg"^^xsd:anyURI ;
     :hasCapacity 8 ;
     :hasBedrooms 4 ;
-    :distanceFromLake 250 ;
-    :nearestCity cd:City4 ;
-    :distanceToCity 9 ;
+    :distanceFromLake 25 ;
+    :nearestCity cd:Suomussalmi ;
+    :distanceToCity 20 ;
     :hasBookedPeriod
         cd:Cottage4Booking1 .
 
 # 5
 cd:Cottage5 a :Cottage ;
-    :cottageName "Cottage5" ;
-    :hasAddress "Address 5" ;
-    :hasImage "https://photos.com/image5"^^xsd:anyURI ;
+    :cottageName "Villa Juurus" ;
+    :hasAddress "Pelonniemientie 30, 98500 Pellonniemi, Finland " ;
+    :hasImage "http://localhost:8080/cottage-booking/images/cottage5.jpg"^^xsd:anyURI ;
     :hasCapacity 5 ;
     :hasBedrooms 2 ;
-    :distanceFromLake 500 ;
-    :nearestCity cd:City5 ;
-    :distanceToCity 15 ;
+    :distanceFromLake 10 ;
+    :nearestCity cd:Kuopio ;
+    :distanceToCity 35 ;
     :hasBookedPeriod
         cd:Cottage5Booking1 ,
         cd:Cottage5Booking2 .
 
 # 6
 cd:Cottage6 a :Cottage ;
-    :cottageName "Cottage6" ;
-    :hasAddress "Address 6" ;
-    :hasImage "https://photos.com/image6"^^xsd:anyURI ;
+    :cottageName "Villa Rautjärvi" ;
+    :hasAddress "Syväsalmentie 67, 51760 Nuutilanmäki, Finland" ;
+    :hasImage "http://localhost:8080/cottage-booking/images/cottage6.jpg"^^xsd:anyURI ;
     :hasCapacity 10 ;
     :hasBedrooms 5 ;
-    :distanceFromLake 60 ;
-    :nearestCity cd:City6 ;
+    :distanceFromLake 50 ;
+    :nearestCity cd:Nuutilanmäki ;
     :distanceToCity 22 ;
     :hasBookedPeriod
         cd:Cottage6Booking1 .
 
 # 7
 cd:Cottage7 a :Cottage ;
-    :cottageName "Cottage7" ;
-    :hasAddress "Address 7" ;
-    :hasImage "https://photos.com/image7"^^xsd:anyURI ;
+    :cottageName "Luxury Cottage" ;
+    :hasAddress "Koskenniskantie 24, 40800 Jyväskylä, Finland" ;
+    :hasImage "http://localhost:8080/cottage-booking/images/cottage7.jpg"^^xsd:anyURI ;
     :hasCapacity 3 ;
     :hasBedrooms 1 ;
-    :distanceFromLake 200 ;
-    :nearestCity cd:City7 ;
-    :distanceToCity 4 ;
+    :distanceFromLake 20 ;
+    :nearestCity cd:Jyväskylä ;
+    :distanceToCity 15 ;
     :hasBookedPeriod
         cd:Cottage7Booking1 ,
         cd:Cottage7Booking2 .

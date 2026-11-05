@@ -7,11 +7,27 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:data="http://localhost:8080/cottage-booking/data/cottages.ttl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    
     <owl:Ontology rdf:about="http://localhost:8080/cottage-booking/onto/cottage.owl">
         <rdfs:comment xml:lang="en">Basic ontology for TIES4520 Task 6;Cottage booking; service. Describes cottages, their nearest city, and the periods in which they are already booked. Lake distance is in meters, city distance in kilometers. Dates are xsd:date, and a period includes both its start and end day.</rdfs:comment>
         <rdfs:label xml:lang="en">Cottage booking ontology</rdfs:label>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
     
 
 
