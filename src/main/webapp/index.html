@@ -2,50 +2,165 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cottage Booking</title>
-  <style>
-    body { font-family: sans-serif; max-width: 600px; margin: 2em auto; padding: 0 1em; }
-    label { display: block; margin-top: 0.8em; }
-    input { width: 100%; padding: 0.4em; box-sizing: border-box; }
-    button { margin-top: 1.2em; padding: 0.6em 1.5em; }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Cottage Booking</h1>
+  <header>
+    <h1>Cottage Booking</h1>
+    <p>Find a cottage by the lake in Finland</p>
+  </header>
 
-  <!-- The 9 search inputs. The servlet at "search" will handle this form. -->
-  <form id="searchForm" action="search" method="get">
-    <label>Your name
-      <input name="bookerName" required>
-    </label>
-    <label>Number of people
-      <input name="requiredPlaces" type="number" min="1" required>
-    </label>
-    <label>Number of bedrooms
-      <input name="requiredBedrooms" type="number" min="1" required>
-    </label>
-    <label>Max distance to a lake (meters)
-      <input name="maxLakeDistance" type="number" min="0" required>
-    </label>
-    <label>City
-      <input name="city" required>
-    </label>
-    <label>Max distance to the city (km)
-      <input name="maxCityDistance" type="number" min="0" required>
-    </label>
-    <label>Number of days
-      <input name="numberOfDays" type="number" min="1" required>
-    </label>
-    <label>Start date (dd.mm.yyyy)
-      <input name="startDate" placeholder="15.12.2026" pattern="\d{2}\.\d{2}\.\d{4}" required>
-    </label>
-    <label>Max shift of the start date (+/- days)
-      <input name="maxShiftDays" type="number" min="0" value="0" required>
-    </label>
+  <main>
+    <!-- The 9 search inputs. Sent to the "search" servlet, which answers with JSON. -->
+    <form id="searchForm" class="panel" action="search" method="get">
+      <h2>Search</h2>
+      <div class="grid">
+        <label>Your name
+          <input name="bookerName" required>
+        </label>
+        <label>Number of people
+          <input name="requiredPlaces" type="number" min="1" required>
+        </label>
+        <label>Number of bedrooms
+          <input name="requiredBedrooms" type="number" min="1" required>
+        </label>
+        <label>Max distance to a lake (meters)
+          <input name="maxLakeDistance" type="number" min="0" required>
+        </label>
+        <label>City
+          <input name="city" required>
+        </label>
+        <label>Max distance to the city (km)
+          <input name="maxCityDistance" type="number" min="0" required>
+        </label>
+        <label>Number of days
+          <input name="numberOfDays" type="number" min="1" required>
+        </label>
+        <label>Start date (dd.mm.yyyy)
+          <input name="startDate" placeholder="15.12.2026" pattern="\d{2}\.\d{2}\.\d{4}" required>
+        </label>
+        <label>Max shift of the start date (+/- days)
+          <input name="maxShiftDays" type="number" min="0" value="0" required>
+        </label>
+      </div>
+      <div class="actions">
+        <button type="submit" id="searchButton">Search</button>
+      </div>
+    </form>
 
-    <button type="submit">Search</button>
-  </form>
+    <section id="results" hidden>
+      <p id="status"></p>
+      <div id="cards" class="cards"></div>
+    </section>
 
-  <p>Ontology: <a href="onto/cottage.owl">onto/cottage.owl</a></p>
+    <footer>
+      Ontology: <a href="onto/cottage.owl">onto/cottage.owl</a>
+    </footer>
+  </main>
+
+  <script>
+    const form = document.getElementById("searchForm");
+    const button = document.getElementById("searchButton");
+    const results = document.getElementById("results");
+    const status = document.getElementById("status");
+    const cards = document.getElementById("cards");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const query = new URLSearchParams(new FormData(form)).toString();
+
+      button.disabled = true;
+      button.textContent = "Searching…";
+      results.hidden = false;
+      status.className = "";
+      status.textContent = "Searching…";
+      cards.replaceChildren();
+
+      try {
+        const response = await fetch("search?" + query, { headers: { Accept: "application/json" } });
+        const data = await response.json();
+
+        if (!response.ok) {
+          showError(data.error || "Search failed (HTTP " + response.status + ")");
+          return;
+        }
+
+        showResults(data);
+      } catch (e) {
+        showError("Could not reach the server: " + e.message);
+      } finally {
+        button.disabled = false;
+        button.textContent = "Search";
+        results.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+
+    function showError(message) {
+      status.className = "error";
+      status.textContent = message;
+    }
+
+    function showResults(list) {
+      if (list.length === 0) {
+        status.textContent = "No cottages match your search. Try a larger distance, a different city or more date flexibility.";
+        return;
+      }
+
+      status.textContent = list.length + (list.length === 1 ? " booking suggestion" : " booking suggestions") + " found.";
+
+      for (const s of list) {
+        cards.appendChild(card(s));
+      }
+    }
+
+    // One result card with all 11 outputs. textContent is used so user input is never parsed as HTML.
+    function card(s) {
+      const el = document.createElement("article");
+      el.className = "card";
+
+      const img = document.createElement("img");
+      img.src = s.imageUrl;
+      img.alt = "Cottage at " + s.address;
+      img.loading = "lazy";
+      el.appendChild(img);
+
+      const body = document.createElement("div");
+      body.className = "card-body";
+
+      const title = document.createElement("h3");
+      title.textContent = s.address;
+      body.appendChild(title);
+
+      const dates = document.createElement("span");
+      dates.className = "dates";
+      dates.textContent = s.startDate + " – " + s.endDate;
+      body.appendChild(dates);
+
+      const details = document.createElement("dl");
+      const rows = [
+        ["Booker", s.bookerName],
+        ["Booking number", s.bookingNumber],
+        ["Capacity", s.capacity + " people"],
+        ["Bedrooms", s.bedrooms],
+        ["Lake", s.lakeDistance + " m"],
+        ["Nearest city", s.nearestCity],
+        ["City distance", s.cityDistance + " km"],
+      ];
+      for (const [label, value] of rows) {
+        const dt = document.createElement("dt");
+        dt.textContent = label;
+        const dd = document.createElement("dd");
+        dd.textContent = value;
+        details.append(dt, dd);
+      }
+      body.appendChild(details);
+
+      el.appendChild(body);
+      return el;
+    }
+  </script>
 </body>
 </html>
